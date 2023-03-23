@@ -10,13 +10,32 @@
    [:title (str "Locations: " title)]
    (page/include-css "/css/styles.css")])
 
-(defn home
-  []
+(def header-links
+  [:div#header-links
+   "[ "
+   [:a {:href "/"} "Home"]
+   " | "
+   [:a {:href "/warm-up"} "1. warm-up"]
+   " | "
+   [:a {:href "/str-training"} "2. Str training"]
+   " ]"])
+
+(defn home []
   (page/html5
    (gen-page-head "Home")
    header-links
-   [:h1 "Home"]
-   [:p "Webapp to store and display some 2D (x,y) locations."]))
+   [:h1 "sgym home"]
+   [:p "This is a static page served by Compojure.
+        The changes are dynamically reloaded.<br/>
+        Make sure this file is actually saved as UTF-8 encoding.
+        Make sure how to check file encoding.
+        English never has an encoding problem.
+        However, when other languages are used, especially multi-byte
+        characters, the problem often surfaces.
+        If the encoding of meta tag and file's encoding are
+        not the same, weird unreadable characters appear on the
+        browser. Your browser may have encoding auto-detect feature
+        and auto-correct outputs, though. "]))
 
 (defn warm-up
   []
@@ -24,7 +43,7 @@
    (gen-page-head "Warm-up")
    header-links
    [:h1 "Warm-up"]
-   [:p Warm-up sets lorem ipsum dolor sit amet]))
+   [:p "Warm-up sets lorem ipsum dolor sit amet"]))
 
 (defn main [req]
    "<div>

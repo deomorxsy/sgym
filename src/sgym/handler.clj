@@ -17,7 +17,11 @@
   (GET "/warm-up"
     []
     ;;(resp/content-type (resp/resource-response "01-warm-up.html" {:root "public"}) "text/html")
-	)
+    (views/warm-up))
+  (GET "/main"
+    []
+    (views/main))
+
   (POST "/str-training"
     {params :params}
    ;;(resp/content-type (resp/resource-response "02-str-training.html" {:root "public"}) "text/html")
