@@ -4,6 +4,28 @@
             [ring.util.anti-forgery :as util]))
 
 
+(defn gen-page-head
+  [title]
+  [:head
+   [:title (str "Locations: " title)]
+   (page/include-css "/css/styles.css")])
+
+(defn home
+  []
+  (page/html5
+   (gen-page-head "Home")
+   header-links
+   [:h1 "Home"]
+   [:p "Webapp to store and display some 2D (x,y) locations."]))
+
+(defn warm-up
+  []
+  (page/html5
+   (gen-page-head "Warm-up")
+   header-links
+   [:h1 "Warm-up"]
+   [:p Warm-up sets lorem ipsum dolor sit amet]))
+
 (defn main [req]
    "<div>
       <h1>Hello Web Page with Routing!</h1>
