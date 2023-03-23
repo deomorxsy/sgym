@@ -16,4 +16,7 @@ To start a web server for the application, run:
 
 ## License
 
+
+![gif](https://media.giphy.com/media/QyWBTLDn9WHt0FXGJS/giphy.gif)
+
 Copyright © 2023 FIXME
