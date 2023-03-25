@@ -8,7 +8,8 @@
   [title]
   [:head
    [:title (str "Locations: " title)]
-   (page/include-css "/css/styles.css")])
+   ;;(page/include-css "/css/styles.css")
+   (page/include-css "/css/main.css")])
 
 (def header-links
   [:div#header-links
