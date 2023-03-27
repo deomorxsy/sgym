@@ -23,8 +23,10 @@
   (GET "/get-submit"  [req] (views/display-result req))
   (POST "/post-submit" [req] (views/display-result req))
   (POST "/str-training" {params :params})
-  (route/resources "/helloworld")
-  (route/not-found "Not Found"))
+  ;;route/resources "/helloworld")
+  ;;(route/not-found "/4dsadasdas")
+  (GET "/not-found" [req] (views/not-found req))
+  )
 
 
 (def app

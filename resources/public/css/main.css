@@ -59,6 +59,20 @@ h2 {
 	padding-left: 40px;
 }
 
+form {
+    /*center the form*/
+    margin: 0 auto;
+    width: 400px;
+    /*cool border or smt*/
+    padding: 1em;
+    border: 1px solid #ccc;
+    border-radius; 1em;
+}
+
+form li + li {
+    margin-top: 1em;
+}
+
 /*========= Mobile view test =========*/
 
 /*@media only all and (min-width: 0px) {

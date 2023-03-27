@@ -61,6 +61,7 @@
 (defn get-form [req]
   ;;[req]
   (page/html5
+  (gen-page-head "gf-style")
     [:div
      [:h1 "Hello GET form!"]
      [:p "Submit a message with GET"]
@@ -74,6 +75,7 @@
 (defn post-form [req]
   ;;[req]
   (page/html5
+  (gen-page-head "pf-style")
    [:div
       [:h1 "Hello POST Form!"]
       [:p "Submit a message with POST"]
@@ -82,8 +84,9 @@
        [:input {:type "submit"} {:value "submit"}]]
       [:p [:a {:href ".."} "Return to main page"]]]))
 
-(defn not-found []
+(defn not-found [req]
   (page/html5
+  (gen-page-head "nunca nem vi")
   [:h1 "404 Error!"]
   [:b "Page not found!"]
   [:b [:a {:href=".."} "Return to main page"]]))
