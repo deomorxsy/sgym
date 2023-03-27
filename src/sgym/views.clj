@@ -1,5 +1,6 @@
 (ns sgym.views
   (:require [clojure.string :as str]
+            [hiccup.core :refer [html h]]
             [hiccup.page :as page]
             [ring.util.anti-forgery :as util]))
 
@@ -46,27 +47,55 @@
    [:h1 "Warm-up"]
    [:p "Warm-up sets lorem ipsum dolor sit amet"]))
 
-(defn main [req]
-   "<div>
-      <h1>Hello Web Page with Routing!</h1>
-      <p>What would you like to do?</p>
-      <p><a href='./get-form.html'>Submit a GET request</a></p>
-      <p><a href='./post-form.html'>Submit a POST request</a></p>
-    </div>")
+(defn main []
+  ;;[req]
+  (page/html5
+  (gen-page-head "main")
+   [:div
+      [:h1 "Hello Web Page with Routing!"]
+      [:p "What would you like to do?"]
+      [:p [:a {:href "./get-form.html"} "Submit a GET request"]]
+      [:p [:a {:href "./post-form.html"} "Submit a POST request"]]]))
 
+
+(defn get-form [req]
+  ;;[req]
+  (page/html5
+    [:div
+     [:h1 "Hello GET form!"]
+     [:p "Submit a message with GET"]
+     [:form {:method "get" :action "get-submit"}
+      [:input {:type "text" :name "get-submit"}]
+      [:input {:type "submit" :value "submit"}]
+     [:p [:a {:href "/main"} "Return to main page!"]]
+      ]]
+    ))
 
 (defn post-form [req]
-   "<div>
-      <h1>Hello POST Form!</h1>
-      <p>Submit a message with POST</p>
-      <form method=\"post\" action=\"post-submit\">
-       <input type=\"text\" name=\"name\" />
-       <input type=\"submit\" value\"submit\" />
-      </form>
-      <p><a href='..'>Return to main page</p>
-    </div>")
+  ;;[req]
+  (page/html5
+   [:div
+      [:h1 "Hello POST Form!"]
+      [:p "Submit a message with POST"]
+      [:form {:method "post" :action "post-submit"}
+       [:input {:type "text"} {:name "name"}]
+       [:input {:type "submit"} {:value "submit"}]]
+      [:p [:a {:href ".."} "Return to main page"]]]))
 
 (defn not-found []
-  "<h1>404 Error!</h1>
-   <b>Page not found!</b>
-   <p><a href='..'>Return to main page</p>")
+  (page/html5
+  [:h1 "404 Error!"]
+  [:b "Page not found!"]
+  [:b [:a {:href=".."} "Return to main page"]]))
+
+(defn display-result [req]
+  (let [{:keys [params uri]} req
+        param-name (get params "name")
+        req-type (if (= uri "get-submit") "GET" "POST")]
+    (page/html5
+      [:div
+          [:h1 "Hello " (h param-name) "!"]
+          [:p "Submitted via a" req-type " request"]
+          [:p [:a {:href="/main"} "Return to main page"]]])))
+
+
