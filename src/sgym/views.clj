@@ -45,37 +45,47 @@
    (gen-page-head "sgym: warm-up")
     [:div
      [:h1 "WARM-UP"]
-     [:label {:for "msg"} "Activity:"]
      [:form {:method "get" :action "get-submit"}
+      [:ul [:li
+       [:label {:for "msg"} "Activity:"]
+       [:input {:type "text" :name "get-submit"}]
+       [:input {:type "submit" :value "submit"}]
+      ]]
+     ]
+
+     [:form {:method "get" :action "get-submit"}
+      [:ul [:li
+       [:label {:for "msg"} "Time/Dist:"]
+       [:input {:type "text" :name "get-submit"}]
+       [:input {:type "submit" :value "submit"}]
+      ]]
+     ]
+
+     [:form {:method "get" :action "get-submit"}
+      [:ul [:li
+      [:label {:for "msg"} "Sets/Reps:"]
+       [:input {:type "text" :name "get-submit"}]
+       [:input {:type "submit" :value "submit"}]
+       ]]
+     ]
+
+     [:form {:method "get" :action "get-submit"}
+      [:ul [:li
+       [:label {:for "msg"} "Intensity:"]
+       [:input {:type "text" :name "get-submit"}]
+       [:input {:type "submit" :value "submit"}]
+      ]]
+     ]
+
+     [:form {:method "get" :action "get-submit"}
+      [:ul [:li
+      [:label {:for "msg"} "Notes:"]
       [:input {:type "text" :name "get-submit"}]
       [:input {:type "submit" :value "submit"}]
-     ]
-
-     [:label {:for "msg"} "Time/Dist:"]
-     [:form {:method "get" :action "get-submit"}
-       [:input {:type "text" :name "get-submit"}]
-       [:input {:type "submit" :value "submit"}]
-     ]
-
-     [:label {:for "msg"} "Sets/Reps:"]
-     [:form {:method "get" :action "get-submit"}
-       [:input {:type "text" :name "get-submit"}]
-       [:input {:type "submit" :value "submit"}]
-     ]
-
-     [:label {:for "msg"} "Intensity:"]
-     [:form {:method "get" :action "get-submit"}
-       [:input {:type "text" :name "get-submit"}]
-       [:input {:type "submit" :value "submit"}]
-     ]
-
-     [:label {:for "msg"} "Notes:"]
-     [:form {:method "get" :action "get-submit"}
-      [:input {:type "text" :name "get-submit"}]
-      [:input {:type "submit" :value "submit"}]
-     [:p [:a {:href "/main"} "Return to main page!"]]
+      ]]
       ]
      ]
+     [:p [:a {:href "/main"} "Return to main page!"]]
     ))
 
 (defn main []

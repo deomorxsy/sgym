@@ -50,8 +50,11 @@ img {
 }
 
 ul {
-	text-align: left;
-	padding-left: 90px;
+	/*text-align: left;*/
+	/*padding-left: 90px;*/
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 h2 {
@@ -63,11 +66,12 @@ form {
     /*center the form*/
     margin: 0 auto;
     width: 400px;
-    /*cool border or smt*/
+    /*cool border idk*/
     padding: 1em;
     border: 1px solid #ccc;
-    border-radius; 1em;
+    border-radius 1em;
 }
+
 
 form li + li {
     margin-top: 1em;
@@ -100,7 +104,7 @@ textarea {
 }
 
 .button {
-    padding-left: 90px;
+    padding-left: 9px;
 }
 
 button {
@@ -109,7 +113,7 @@ button {
 
 
 
-/*========= Mobile view test =========*/
+/*========= Viewport =========*/
 
 /*@media only all and (min-width: 0px) {
 
