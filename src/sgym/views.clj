@@ -42,10 +42,41 @@
 (defn warm-up
   []
   (page/html5
-   (gen-page-head "Warm-up")
-   header-links
-   [:h1 "Warm-up"]
-   [:p "Warm-up sets lorem ipsum dolor sit amet"]))
+   (gen-page-head "sgym: warm-up")
+    [:div
+     [:h1 "WARM-UP"]
+     [:label {:for "msg"} "Activity:"]
+     [:form {:method "get" :action "get-submit"}
+      [:input {:type "text" :name "get-submit"}]
+      [:input {:type "submit" :value "submit"}]
+     ]
+
+     [:label {:for "msg"} "Time/Dist:"]
+     [:form {:method "get" :action "get-submit"}
+       [:input {:type "text" :name "get-submit"}]
+       [:input {:type "submit" :value "submit"}]
+     ]
+
+     [:label {:for "msg"} "Sets/Reps:"]
+     [:form {:method "get" :action "get-submit"}
+       [:input {:type "text" :name "get-submit"}]
+       [:input {:type "submit" :value "submit"}]
+     ]
+
+     [:label {:for "msg"} "Intensity:"]
+     [:form {:method "get" :action "get-submit"}
+       [:input {:type "text" :name "get-submit"}]
+       [:input {:type "submit" :value "submit"}]
+     ]
+
+     [:label {:for "msg"} "Notes:"]
+     [:form {:method "get" :action "get-submit"}
+      [:input {:type "text" :name "get-submit"}]
+      [:input {:type "submit" :value "submit"}]
+     [:p [:a {:href "/main"} "Return to main page!"]]
+      ]
+     ]
+    ))
 
 (defn main []
   ;;[req]
