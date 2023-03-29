@@ -17,27 +17,32 @@
    "[ "
    [:a {:href "/"} "Home"]
    " | "
-   [:a {:href "/warm-up"} "1. warm-up"]
-   " | "
-   [:a {:href "/str-training"} "2. Str training"]
-   " ]"])
+   [:a {:href "/new-plan"} "New Plan"]
+   " ]"]
+    )
 
 (defn home []
   (page/html5
    (gen-page-head "Home")
    header-links
-   [:h1 "sgym home"]
-   [:p "This is a static page served by Compojure.
-        The changes are dynamically reloaded.<br/>
-        Make sure this file is actually saved as UTF-8 encoding.
-        Make sure how to check file encoding.
-        English never has an encoding problem.
-        However, when other languages are used, especially multi-byte
-        characters, the problem often surfaces.
-        If the encoding of meta tag and file's encoding are
-        not the same, weird unreadable characters appear on the
-        browser. Your browser may have encoding auto-detect feature
-        and auto-correct outputs, though. "]))
+   [:h1 "sgym"]
+   [:p "Welcome to our premier gym, where fitness and
+        health meet. We offer state-of-the-art equipment,
+        a clean and spacious facility, and expert trainers
+        who are dedicated to helping you achieve your fitness
+        goals. Whether you're a beginner or a seasoned athlete,
+        our supportive community and personalized approach will
+        help you get the results you want. Come in today and
+        experience the energy and motivation of our gym.
+        Let's work together to transform your body and
+        your life. "]))
+
+(defn str-training
+  []
+  (page/html5
+   (gen-page-head "sgym: warm-up")
+    [:div
+     [:h1 "WARM-UP"]]))
 
 (defn warm-up
   []
@@ -98,6 +103,20 @@
       [:p [:a {:href "./get-form.html"} "Submit a GET request"]]
       [:p [:a {:href "./post-form.html"} "Submit a POST request"]]]))
 
+(defn new-plan []
+  ;; [req]
+  (page/html5
+  (gen-page-head "New Plan")
+   [:div
+    [:h1 "Weekly Plan"]
+     [:ul [:li
+      [:p [:a {:href "/new-plan/warm-up"} "1. Warm-up"]]
+      [:p [:a {:href "/new-plan/str"} "2. Strength training"]]
+      [:p [:a {:href "/new-plan/cardio"} "3. Cardio training"]]
+      [:p [:a {:href "/warm-up/cool"} "4. Cool down"]]
+     ]]
+   ]))
+
 
 (defn get-form [req]
   ;;[req]
@@ -120,6 +139,8 @@
    [:div
       [:h1 "Hello POST Form!"]
       [:p "Submit a message with POST"]
+      ;; action sends the form-data to a file (URL URI)
+      ;; named "post-submit", processing the input
       [:form {:method "post" :action "post-submit"}
        [:input {:type "text"} {:name "name"}]
        [:input {:type "submit"} {:value "submit"}]]

@@ -1,7 +1,7 @@
 ;;handler: a function that takes a request map and returns a response.
 
 (ns sgym.handler
-  (:require [compojure.core :refer [defroutes GET POST PUT DELETE ANY]]
+  (:require [compojure.core :refer [context defroutes GET POST PUT DELETE ANY]]
             [ring.util.response :as resp]
             [compojure.handler :as handler]
             [compojure.route :as route]
@@ -16,11 +16,13 @@
   (GET "/"        []
        ;;(resp/content-type (resp/resource-response "001-helloworld.html" {:root "public"}) "text/html")
                      (views/home))
-  (GET "/warm-up"     [] (views/warm-up))
+  (GET "/new-plan"    [] (views/new-plan))
+  ;;(GET "/warm-up"     [] (views/warm-up))
   (GET "/main"        [] (views/main))
   (GET "/get-form.html"    [req] (views/get-form req))
   (GET "/post-form.html"   [req] (views/post-form req))
   (GET "/get-submit"  [req] (views/display-result req))
+  ;; route action that processes the form-data
   (POST "/post-submit" [req] (views/display-result req))
   (POST "/str-training" {params :params})
   ;;route/resources "/helloworld")
@@ -28,6 +30,13 @@
   (GET "/not-found" [req] (views/not-found req))
   )
 
+(defroutes user-routes
+  (context "/new-plan" [] (views/new-plan)
+   (GET "/warm-up" [] (views/warm-up))
+   (GET "/str-training" [] (views/str-training))
+   (GET "/cardio" [] (views/cardio))
+   (GET "/cool" [] (views/cool))
+  ))
 
 (def app
   (wrap-defaults app-routes site-defaults))
