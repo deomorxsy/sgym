@@ -37,12 +37,156 @@
         Let's work together to transform your body and
         your life. "]))
 
-(defn str-training
+
+
+  (defn cool
   []
   (page/html5
-   (gen-page-head "sgym: warm-up")
+   (gen-page-head "sgym: Cool down")
     [:div
-     [:h1 "WARM-UP"]]))
+     [:h1 "Cool down"]
+     [:form {:method "get" :action "get-submit"}
+      [:ul [:li
+       [:label {:for "msg"} "Exercises"]
+       [:input {:type "text" :name "get-submit"}]
+       [:input {:type "submit" :value "submit"}]
+      ]]
+     ]
+
+     [:form {:method "get" :action "get-submit"}
+      [:ul [:li
+       [:label {:for "msg"} "Time/Dist"]
+       [:input {:type "text" :name "get-submit"}]
+       [:input {:type "submit" :value "submit"}]
+      ]]
+     ]
+
+     [:form {:method "get" :action "get-submit"}
+      [:ul [:li
+      [:label {:for "msg"} "Sets/Reps"]
+       [:input {:type "text" :name "get-submit"}]
+       [:input {:type "submit" :value "submit"}]
+       ]]
+     ]
+
+     [:form {:method "get" :action "get-submit"}
+      [:ul [:li
+       [:label {:for "msg"} "Intensity"]
+       [:input {:type "text" :name "get-submit"}]
+       [:input {:type "submit" :value "submit"}]
+      ]]
+     ]
+
+     [:form {:method "get" :action "get-submit"}
+      [:ul [:li
+      [:label {:for "msg"} "Notes:"]
+      [:input {:type "text" :name "get-submit"}]
+      [:input {:type "submit" :value "submit"}]
+      ]]
+      ]
+     ]
+     [:p [:a {:href "/main"} "Return to main page!"]]
+    ))
+
+ (defn cardio
+  []
+  (page/html5
+   (gen-page-head "sgym: Cardio")
+    [:div
+     [:h1 "Cardio"]
+     [:form {:method "get" :action "get-submit"}
+      [:ul [:li
+       [:label {:for "msg"} "Exercises"]
+       [:input {:type "text" :name "get-submit"}]
+       [:input {:type "submit" :value "submit"}]
+      ]]
+     ]
+
+     [:form {:method "get" :action "get-submit"}
+      [:ul [:li
+       [:label {:for "msg"} "Time/Dist"]
+       [:input {:type "text" :name "get-submit"}]
+       [:input {:type "submit" :value "submit"}]
+      ]]
+     ]
+
+     [:form {:method "get" :action "get-submit"}
+      [:ul [:li
+      [:label {:for "msg"} "Target HR"]
+       [:input {:type "text" :name "get-submit"}]
+       [:input {:type "submit" :value "submit"}]
+       ]]
+     ]
+
+     [:form {:method "get" :action "get-submit"}
+      [:ul [:li
+       [:label {:for "msg"} "Intensity"]
+       [:input {:type "text" :name "get-submit"}]
+       [:input {:type "submit" :value "submit"}]
+      ]]
+     ]
+
+     [:form {:method "get" :action "get-submit"}
+      [:ul [:li
+      [:label {:for "msg"} "Notes:"]
+      [:input {:type "text" :name "get-submit"}]
+      [:input {:type "submit" :value "submit"}]
+      ]]
+      ]
+     ]
+     [:p [:a {:href "/main"} "Return to main page!"]]
+    ))
+
+
+ (defn strength
+  []
+  (page/html5
+   (gen-page-head "sgym: Strength training")
+    [:div
+     [:h1 "Strength Training"]
+     [:form {:method "get" :action "get-submit"}
+      [:ul [:li
+       [:label {:for "msg"} "Exercises"]
+       [:input {:type "text" :name "get-submit"}]
+       [:input {:type "submit" :value "submit"}]
+      ]]
+     ]
+
+     [:form {:method "get" :action "get-submit"}
+      [:ul [:li
+       [:label {:for "msg"} "Sets/Reps"]
+       [:input {:type "text" :name "get-submit"}]
+       [:input {:type "submit" :value "submit"}]
+      ]]
+     ]
+
+     [:form {:method "get" :action "get-submit"}
+      [:ul [:li
+      [:label {:for "msg"} "Weight"]
+       [:input {:type "text" :name "get-submit"}]
+       [:input {:type "submit" :value "submit"}]
+       ]]
+     ]
+
+     [:form {:method "get" :action "get-submit"}
+      [:ul [:li
+       [:label {:for "msg"} "Rest Time"]
+       [:input {:type "text" :name "get-submit"}]
+       [:input {:type "submit" :value "submit"}]
+      ]]
+     ]
+
+     [:form {:method "get" :action "get-submit"}
+      [:ul [:li
+      [:label {:for "msg"} "Notes:"]
+      [:input {:type "text" :name "get-submit"}]
+      [:input {:type "submit" :value "submit"}]
+      ]]
+      ]
+     ]
+     [:p [:a {:href "/main"} "Return to main page!"]]
+    ))
+
 
 (defn warm-up
   []
@@ -110,10 +254,10 @@
    [:div
     [:h1 "Weekly Plan"]
      [:ul [:li
-      [:p [:a {:href "/new-plan/warm-up"} "1. Warm-up"]]
-      [:p [:a {:href "/new-plan/str"} "2. Strength training"]]
+      [:p [:a {:href "/new-plan/warm-up"} "1. Warm up"]]
+      [:p [:a {:href "/new-plan/strength"} "2. Strength training"]]
       [:p [:a {:href "/new-plan/cardio"} "3. Cardio training"]]
-      [:p [:a {:href "/warm-up/cool"} "4. Cool down"]]
+      [:p [:a {:href "/new-plan/cool"} "4. Cool down"]]
      ]]
    ]))
 

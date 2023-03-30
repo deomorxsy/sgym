@@ -28,15 +28,23 @@
   ;;route/resources "/helloworld")
   ;;(route/not-found "/4dsadasdas")
   (GET "/not-found" [req] (views/not-found req))
-  )
+  (context "/new-plan" []
+            (GET "/" [] (views/new-plan))
+            (GET "/warm-up" [] (views/warm-up))
+            (GET "/strength" [] (views/strength))
+            (GET "/cardio" [] (views/cardio))
+            (GET "/cool" [] (views/cool))
+    ))
 
-(defroutes user-routes
-  (context "/new-plan" [] (views/new-plan)
-   (GET "/warm-up" [] (views/warm-up))
-   (GET "/str-training" [] (views/str-training))
-   (GET "/cardio" [] (views/cardio))
-   (GET "/cool" [] (views/cool))
-  ))
+
+;;(defroutes user-routes
+;;  (context "/new-plan" []
+;;   (GET "/" [] (views/new-plan))
+;;   (GET "/warm-up" [] (views/warm-up))
+   ;;(GET "/strength" [] (strength))
+   ;;(GET "/cardio" [] (views/cardio))
+   ;;(GET "/cool" [] (views/cool))
+  ;;))
 
 (def app
   (wrap-defaults app-routes site-defaults))
