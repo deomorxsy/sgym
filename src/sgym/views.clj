@@ -1,30 +1,310 @@
 (ns sgym.views
   (:require [clojure.string :as str]
+            [hiccup.core :refer [html h]]
             [hiccup.page :as page]
             [ring.util.anti-forgery :as util]))
 
 
-(defn main [req]
-   "<div>
-      <h1>Hello Web Page with Routing!</h1>
-      <p>What would you like to do?</p>
-      <p><a href='./get-form.html'>Submit a GET request</a></p>
-      <p><a href='./post-form.html'>Submit a POST request</a></p>
-    </div>")
+(defn gen-page-head
+  [title]
+  [:head
+   [:title (str "Locations: " title)]
+   ;;(page/include-css "/css/styles.css")
+   (page/include-css "/css/main.css")])
 
+(def header-links
+  [:div#header-links
+   "[ "
+   [:a {:href "/"} "Home"]
+   " | "
+   [:a {:href "/new-plan"} "New Plan"]
+   " ]"]
+    )
+
+(defn home []
+  (page/html5
+   (gen-page-head "Home")
+   header-links
+   [:h1 "sgym"]
+   [:p "Welcome to our premier gym, where fitness and
+        health meet. We offer state-of-the-art equipment,
+        a clean and spacious facility, and expert trainers
+        who are dedicated to helping you achieve your fitness
+        goals. Whether you're a beginner or a seasoned athlete,
+        our supportive community and personalized approach will
+        help you get the results you want. Come in today and
+        experience the energy and motivation of our gym.
+        Let's work together to transform your body and
+        your life. "]))
+
+
+
+  (defn cool
+  []
+  (page/html5
+   (gen-page-head "sgym: Cool down")
+    [:div
+     [:h1 "Cool down"]
+     [:form {:method "get" :action "get-submit"}
+      [:ul [:li
+       [:label {:for "msg"} "Exercises"]
+       [:input {:type "text" :name "get-submit"}]
+       [:input {:type "submit" :value "submit"}]
+      ]]
+     ]
+
+     [:form {:method "get" :action "get-submit"}
+      [:ul [:li
+       [:label {:for "msg"} "Time/Dist"]
+       [:input {:type "text" :name "get-submit"}]
+       [:input {:type "submit" :value "submit"}]
+      ]]
+     ]
+
+     [:form {:method "get" :action "get-submit"}
+      [:ul [:li
+      [:label {:for "msg"} "Sets/Reps"]
+       [:input {:type "text" :name "get-submit"}]
+       [:input {:type "submit" :value "submit"}]
+       ]]
+     ]
+
+     [:form {:method "get" :action "get-submit"}
+      [:ul [:li
+       [:label {:for "msg"} "Intensity"]
+       [:input {:type "text" :name "get-submit"}]
+       [:input {:type "submit" :value "submit"}]
+      ]]
+     ]
+
+     [:form {:method "get" :action "get-submit"}
+      [:ul [:li
+      [:label {:for "msg"} "Notes:"]
+      [:input {:type "text" :name "get-submit"}]
+      [:input {:type "submit" :value "submit"}]
+      ]]
+      ]
+     ]
+     [:p [:a {:href "/main"} "Return to main page!"]]
+    ))
+
+ (defn cardio
+  []
+  (page/html5
+   (gen-page-head "sgym: Cardio")
+    [:div
+     [:h1 "Cardio"]
+     [:form {:method "get" :action "get-submit"}
+      [:ul [:li
+       [:label {:for "msg"} "Exercises"]
+       [:input {:type "text" :name "get-submit"}]
+       [:input {:type "submit" :value "submit"}]
+      ]]
+     ]
+
+     [:form {:method "get" :action "get-submit"}
+      [:ul [:li
+       [:label {:for "msg"} "Time/Dist"]
+       [:input {:type "text" :name "get-submit"}]
+       [:input {:type "submit" :value "submit"}]
+      ]]
+     ]
+
+     [:form {:method "get" :action "get-submit"}
+      [:ul [:li
+      [:label {:for "msg"} "Target HR"]
+       [:input {:type "text" :name "get-submit"}]
+       [:input {:type "submit" :value "submit"}]
+       ]]
+     ]
+
+     [:form {:method "get" :action "get-submit"}
+      [:ul [:li
+       [:label {:for "msg"} "Intensity"]
+       [:input {:type "text" :name "get-submit"}]
+       [:input {:type "submit" :value "submit"}]
+      ]]
+     ]
+
+     [:form {:method "get" :action "get-submit"}
+      [:ul [:li
+      [:label {:for "msg"} "Notes:"]
+      [:input {:type "text" :name "get-submit"}]
+      [:input {:type "submit" :value "submit"}]
+      ]]
+      ]
+     ]
+     [:p [:a {:href "/main"} "Return to main page!"]]
+    ))
+
+
+ (defn strength
+  []
+  (page/html5
+   (gen-page-head "sgym: Strength training")
+    [:div
+     [:h1 "Strength Training"]
+     [:form {:method "get" :action "get-submit"}
+      [:ul [:li
+       [:label {:for "msg"} "Exercises"]
+       [:input {:type "text" :name "get-submit"}]
+       [:input {:type "submit" :value "submit"}]
+      ]]
+     ]
+
+     [:form {:method "get" :action "get-submit"}
+      [:ul [:li
+       [:label {:for "msg"} "Sets/Reps"]
+       [:input {:type "text" :name "get-submit"}]
+       [:input {:type "submit" :value "submit"}]
+      ]]
+     ]
+
+     [:form {:method "get" :action "get-submit"}
+      [:ul [:li
+      [:label {:for "msg"} "Weight"]
+       [:input {:type "text" :name "get-submit"}]
+       [:input {:type "submit" :value "submit"}]
+       ]]
+     ]
+
+     [:form {:method "get" :action "get-submit"}
+      [:ul [:li
+       [:label {:for "msg"} "Rest Time"]
+       [:input {:type "text" :name "get-submit"}]
+       [:input {:type "submit" :value "submit"}]
+      ]]
+     ]
+
+     [:form {:method "get" :action "get-submit"}
+      [:ul [:li
+      [:label {:for "msg"} "Notes:"]
+      [:input {:type "text" :name "get-submit"}]
+      [:input {:type "submit" :value "submit"}]
+      ]]
+      ]
+     ]
+     [:p [:a {:href "/main"} "Return to main page!"]]
+    ))
+
+
+(defn warm-up
+  []
+  (page/html5
+   (gen-page-head "sgym: warm-up")
+    [:div
+     [:h1 "WARM-UP"]
+     [:form {:method "get" :action "get-submit"}
+      [:ul [:li
+       [:label {:for "msg"} "Activity:"]
+       [:input {:type "text" :name "get-submit"}]
+       [:input {:type "submit" :value "submit"}]
+      ]]
+     ]
+
+     [:form {:method "get" :action "get-submit"}
+      [:ul [:li
+       [:label {:for "msg"} "Time/Dist:"]
+       [:input {:type "text" :name "get-submit"}]
+       [:input {:type "submit" :value "submit"}]
+      ]]
+     ]
+
+     [:form {:method "get" :action "get-submit"}
+      [:ul [:li
+      [:label {:for "msg"} "Sets/Reps:"]
+       [:input {:type "text" :name "get-submit"}]
+       [:input {:type "submit" :value "submit"}]
+       ]]
+     ]
+
+     [:form {:method "get" :action "get-submit"}
+      [:ul [:li
+       [:label {:for "msg"} "Intensity:"]
+       [:input {:type "text" :name "get-submit"}]
+       [:input {:type "submit" :value "submit"}]
+      ]]
+     ]
+
+     [:form {:method "get" :action "get-submit"}
+      [:ul [:li
+      [:label {:for "msg"} "Notes:"]
+      [:input {:type "text" :name "get-submit"}]
+      [:input {:type "submit" :value "submit"}]
+      ]]
+      ]
+     ]
+     [:p [:a {:href "/main"} "Return to main page!"]]
+    ))
+
+(defn main []
+  ;;[req]
+  (page/html5
+  (gen-page-head "main")
+   [:div
+      [:h1 "Hello Web Page with Routing!"]
+      [:p "What would you like to do?"]
+      [:p [:a {:href "./get-form.html"} "Submit a GET request"]]
+      [:p [:a {:href "./post-form.html"} "Submit a POST request"]]]))
+
+(defn new-plan []
+  ;; [req]
+  (page/html5
+  (gen-page-head "New Plan")
+   [:div
+    [:h1 "Weekly Plan"]
+     [:ul [:li
+      [:p [:a {:href "/new-plan/warm-up"} "1. Warm up"]]
+      [:p [:a {:href "/new-plan/strength"} "2. Strength training"]]
+      [:p [:a {:href "/new-plan/cardio"} "3. Cardio training"]]
+      [:p [:a {:href "/new-plan/cool"} "4. Cool down"]]
+     ]]
+   ]))
+
+
+(defn get-form [req]
+  ;;[req]
+  (page/html5
+  (gen-page-head "gf-style")
+    [:div
+     [:h1 "Hello GET form!"]
+     [:p "Submit a message with GET"]
+     [:form {:method "get" :action "get-submit"}
+      [:input {:type "text" :name "get-submit"}]
+      [:input {:type "submit" :value "submit"}]
+     [:p [:a {:href "/main"} "Return to main page!"]]
+      ]]
+    ))
 
 (defn post-form [req]
-   "<div>
-      <h1>Hello POST Form!</h1>
-      <p>Submit a message with POST</p>
-      <form method=\"post\" action=\"post-submit\">
-       <input type=\"text\" name=\"name\" />
-       <input type=\"submit\" value\"submit\" />
-      </form>
-      <p><a href='..'>Return to main page</p>
-    </div>")
+  ;;[req]
+  (page/html5
+  (gen-page-head "pf-style")
+   [:div
+      [:h1 "Hello POST Form!"]
+      [:p "Submit a message with POST"]
+      ;; action sends the form-data to a file (URL URI)
+      ;; named "post-submit", processing the input
+      [:form {:method "post" :action "post-submit"}
+       [:input {:type "text"} {:name "name"}]
+       [:input {:type "submit"} {:value "submit"}]]
+      [:p [:a {:href ".."} "Return to main page"]]]))
 
-(defn not-found []
-  "<h1>404 Error!</h1>
-   <b>Page not found!</b>
-   <p><a href='..'>Return to main page</p>")
+(defn not-found [req]
+  (page/html5
+  (gen-page-head "nunca nem vi")
+  [:h1 "404 Error!"]
+  [:b "Page not found!"]
+  [:b [:a {:href=".."} "Return to main page"]]))
+
+(defn display-result [req]
+  (let [{:keys [params uri]} req
+        param-name (get params "name")
+        req-type (if (= uri "get-submit") "GET" "POST")]
+    (page/html5
+      [:div
+          [:h1 "Hello " (h param-name) "!"]
+          [:p "Submitted via a" req-type " request"]
+          [:p [:a {:href="/main"} "Return to main page"]]])))
+
+
