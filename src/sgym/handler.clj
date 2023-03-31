@@ -12,15 +12,16 @@
             [ring.middleware.params :as rmp]))
 
 ;; rendering from html file instead of views (which uses hiccup)
+
 (defroutes app-routes
   (GET "/"        []
        ;;(resp/content-type (resp/resource-response "001-helloworld.html" {:root "public"}) "text/html")
                      (views/home))
   (GET "/new-plan"    [] (views/new-plan))
   ;;(GET "/warm-up"     [] (views/warm-up))
-  (GET "/main"        [] (views/main))
-  (GET "/get-form.html"    [req] (views/get-form req))
-  (GET "/post-form.html"   [req] (views/post-form req))
+  ;; (GET "/main"        [] (views/main))
+  ;; (GET "/get-form.html"    [req] (views/get-form req))
+  ;; (GET "/post-form.html"   [req] (views/post-form req))
   (GET "/get-submit"  [req] (views/display-result req))
   ;; route action that processes the form-data
   (POST "/post-submit" [req] (views/display-result req))
@@ -28,6 +29,11 @@
   ;;route/resources "/helloworld")
   ;;(route/not-found "/4dsadasdas")
   (GET "/not-found" [req] (views/not-found req))
+  ;; (GET "/new-plan/warm-up" [] ())
+(POST "/warm-up"  {params :params} (views/post-warm-up params))
+(POST "/strength"  {params :params} (views/post-strength params))
+(POST "/cardio"  {params :params} (views/post-cardio params))
+(POST "/cool"  {params :params} (views/post-cool params))
   (context "/new-plan" []
             (GET "/" [] (views/new-plan))
             (GET "/warm-up" [] (views/warm-up))
@@ -35,7 +41,6 @@
             (GET "/cardio" [] (views/cardio))
             (GET "/cool" [] (views/cool))
     ))
-
 
 ;;(defroutes user-routes
 ;;  (context "/new-plan" []
@@ -47,4 +52,7 @@
   ;;))
 
 (def app
-  (wrap-defaults app-routes site-defaults))
+  (wrap-defaults app-routes (assoc-in site-defaults [:security :anti-forgery] false)))
+  ;; (wrap-defaults app-routes site-defaults))
+
+

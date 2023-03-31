@@ -45,48 +45,42 @@
    (gen-page-head "sgym: Cool down")
     [:div
      [:h1 "Cool down"]
-     [:form {:method "get" :action "get-submit"}
+     [:form {:method "POST" :action "/cool"}
       [:ul [:li
-       [:label {:for "msg"} "Exercises"]
-       [:input {:type "text" :name "get-submit"}]
-       [:input {:type "submit" :value "submit"}]
+       [:label {:for "exercise"} "Exercises"]
+        [:input {:type "text" :name "exercise"}]
+        [:label {:for "time"} "Time/Dist"]
+        [:input {:type "text" :name "time"}]
+        [:label {:for "reps"} "Sets/Reps:"]
+        [:input {:type "text" :name "reps" :id "reps"}]
+        [:label {:for "intensity"} "Intensity"]
+        [:input {:type "text" :name "intensity"}]
+        [:label {:for "notes"} "Notes:"]
+        [:input {:type "text" :name "notes"}]
+        [:input {:type "submit" :value "submit"}]
       ]]
      ]
+    ]
+     [:p [:a {:href "/"} "Return to main page!"]]
+    ))
 
-     [:form {:method "get" :action "get-submit"}
+(defn post-cool 
+  [{:keys [exercise time reps intensity notes]}]
+    (page/html5
+    (gen-page-head "Form Submitted")
+      [:div
+      [:h1 "Form Submitted"]
+      [:p "You submitted the following:"]
       [:ul [:li
-       [:label {:for "msg"} "Time/Dist"]
-       [:input {:type "text" :name "get-submit"}]
-       [:input {:type "submit" :value "submit"}]
-      ]]
-     ]
-
-     [:form {:method "get" :action "get-submit"}
-      [:ul [:li
-      [:label {:for "msg"} "Sets/Reps"]
-       [:input {:type "text" :name "get-submit"}]
-       [:input {:type "submit" :value "submit"}]
-       ]]
-     ]
-
-     [:form {:method "get" :action "get-submit"}
-      [:ul [:li
-       [:label {:for "msg"} "Intensity"]
-       [:input {:type "text" :name "get-submit"}]
-       [:input {:type "submit" :value "submit"}]
-      ]]
-     ]
-
-     [:form {:method "get" :action "get-submit"}
-      [:ul [:li
-      [:label {:for "msg"} "Notes:"]
-      [:input {:type "text" :name "get-submit"}]
-      [:input {:type "submit" :value "submit"}]
+        [:label {:for "msg"} exercise]
+        [:label {:for "msg"} time]
+        [:label {:for "msg"} reps]
+        [:label {:for "msg"} intensity]
+        [:label {:for "msg"} notes]
       ]]
       ]
-     ]
-     [:p [:a {:href "/main"} "Return to main page!"]]
-    ))
+      [:p [:a {:href "/"} "Return to main page!"]]
+      ))
 
  (defn cardio
   []
@@ -94,49 +88,42 @@
    (gen-page-head "sgym: Cardio")
     [:div
      [:h1 "Cardio"]
-     [:form {:method "get" :action "get-submit"}
+     [:form {:method "POST" :action "/cardio"}
       [:ul [:li
-       [:label {:for "msg"} "Exercises"]
-       [:input {:type "text" :name "get-submit"}]
-       [:input {:type "submit" :value "submit"}]
+        [:label {:for "exercise"} "Exercises"]
+        [:input {:type "text" :name "exercise"}]
+        [:label {:for "time"} "Time/Dist"]
+        [:input {:type "text" :name "time"}]
+        [:label {:for "target"} "Target HR"]
+        [:input {:type "text" :name "target"}]
+        [:label {:for "intensity"} "Intensity"]
+        [:input {:type "text" :name "intensity"}]
+        [:label {:for "notes"} "Notes:"]
+        [:input {:type "text" :name "notes" :id "notes"}]
+        [:input {:type "submit" :value "submit"}]
       ]]
      ]
-
-     [:form {:method "get" :action "get-submit"}
-      [:ul [:li
-       [:label {:for "msg"} "Time/Dist"]
-       [:input {:type "text" :name "get-submit"}]
-       [:input {:type "submit" :value "submit"}]
-      ]]
-     ]
-
-     [:form {:method "get" :action "get-submit"}
-      [:ul [:li
-      [:label {:for "msg"} "Target HR"]
-       [:input {:type "text" :name "get-submit"}]
-       [:input {:type "submit" :value "submit"}]
-       ]]
-     ]
-
-     [:form {:method "get" :action "get-submit"}
-      [:ul [:li
-       [:label {:for "msg"} "Intensity"]
-       [:input {:type "text" :name "get-submit"}]
-       [:input {:type "submit" :value "submit"}]
-      ]]
-     ]
-
-     [:form {:method "get" :action "get-submit"}
-      [:ul [:li
-      [:label {:for "msg"} "Notes:"]
-      [:input {:type "text" :name "get-submit"}]
-      [:input {:type "submit" :value "submit"}]
-      ]]
-      ]
-     ]
-     [:p [:a {:href "/main"} "Return to main page!"]]
+    ]
+     [:p [:a {:href "/"} "Return to main page!"]]
     ))
 
+(defn post-cardio 
+[{:keys [exercise time target intensity notes]}]
+  (page/html5
+   (gen-page-head "Form Submitted")
+    [:div
+     [:h1 "Form Submitted"]
+     [:p "You submitted the following:"]
+     [:ul [:li
+      [:label {:for "msg"} exercise]
+      [:label {:for "msg"} time]
+      [:label {:for "msg"} target]
+      [:label {:for "msg"} intensity]
+      [:label {:for "msg"} notes]
+     ]]
+    ]
+    [:p [:a {:href "/"} "Return to main page!"]]
+    ))
 
  (defn strength
   []
@@ -144,49 +131,45 @@
    (gen-page-head "sgym: Strength training")
     [:div
      [:h1 "Strength Training"]
-     [:form {:method "get" :action "get-submit"}
+     [:form {:method "POST" :action "/strength"}
       [:ul [:li
-       [:label {:for "msg"} "Exercises"]
-       [:input {:type "text" :name "get-submit"}]
-       [:input {:type "submit" :value "submit"}]
-      ]]
-     ]
-
-     [:form {:method "get" :action "get-submit"}
-      [:ul [:li
-       [:label {:for "msg"} "Sets/Reps"]
-       [:input {:type "text" :name "get-submit"}]
-       [:input {:type "submit" :value "submit"}]
-      ]]
-     ]
-
-     [:form {:method "get" :action "get-submit"}
-      [:ul [:li
-      [:label {:for "msg"} "Weight"]
-       [:input {:type "text" :name "get-submit"}]
-       [:input {:type "submit" :value "submit"}]
-       ]]
-     ]
-
-     [:form {:method "get" :action "get-submit"}
-      [:ul [:li
-       [:label {:for "msg"} "Rest Time"]
-       [:input {:type "text" :name "get-submit"}]
-       [:input {:type "submit" :value "submit"}]
-      ]]
-     ]
-
-     [:form {:method "get" :action "get-submit"}
-      [:ul [:li
-      [:label {:for "msg"} "Notes:"]
-      [:input {:type "text" :name "get-submit"}]
+      [:label {:for "exercise"} "Exercise:"]
+      [:input {:type "text" :name "exercise" :id "exercise"}]
+      [:label {:for "sets"} "Sets:"]
+      [:input {:type "text" :name "sets" :id "sets"}]
+      [:label {:for "reps"} "Sets/Reps:"]
+      [:input {:type "text" :name "reps" :id "reps"}]
+      [:label {:for "weight"} "Weight:"]
+      [:input {:type "text" :name "weight" :id "weight"}]
+      [:label {:for "rest"} "Rest:"]
+      [:input {:type "text" :name "rest" :id "rest"}]
+      [:label {:for "notes"} "Notes:"]
+      [:input {:type "text" :name "notes" :id "notes"}]
       [:input {:type "submit" :value "submit"}]
       ]]
-      ]
      ]
-     [:p [:a {:href "/main"} "Return to main page!"]]
+     ]
+     [:p [:a {:href "/"} "Return to main page!"]]
     ))
 
+(defn post-strength 
+[{:keys [exercise sets reps weight rest notes]}]
+  (page/html5
+   (gen-page-head "Form Submitted")
+    [:div
+     [:h1 "Form Submitted"]
+     [:p "You submitted the following:"]
+     [:ul [:li
+      [:label {:for "msg"} exercise]
+      [:label {:for "msg"} sets]
+      [:label {:for "msg"} reps]
+      [:label {:for "msg"} weight]
+      [:label {:for "msg"} rest]
+      [:label {:for "msg"} notes]
+     ]]
+    ]
+    [:p [:a {:href "/"} "Return to main page!"]]
+    ))
 
 (defn warm-up
   []
@@ -194,47 +177,42 @@
    (gen-page-head "sgym: warm-up")
     [:div
      [:h1 "WARM-UP"]
-     [:form {:method "get" :action "get-submit"}
+      [:form {:method "POST" :action "/warm-up" :id "warmUpForm"}
       [:ul [:li
-       [:label {:for "msg"} "Activity:"]
-       [:input {:type "text" :name "get-submit"}]
-       [:input {:type "submit" :value "submit"}]
+        [:label {:for "activity"} "Activity:"]
+        [:input {:type "text" :name "activity" :id "activity"}]
+        [:label {:for "timeDist"} "Time/Dist:"]
+        [:input {:type "text" :name "timeDist" :id "timeDist"}]
+        [:label {:for "sets"} "Sets/Reps:"]
+        [:input {:type "text" :name "sets" :id "sets"}]
+        [:label {:for "notes"} "Notes:"]
+        [:input {:type "text" :name "notes" :id "notes"}]
+        [:label {:for "intensity"} "Intensity:"]
+        [:input {:type "text" :name "intensity" :id "intensity"}]
+        [:input {:type "submit" :value "submit"}]
       ]]
      ]
+    ]
+    [:p [:a {:href "/"} "Return to main page!"]]
+    ))
 
-     [:form {:method "get" :action "get-submit"}
-      [:ul [:li
-       [:label {:for "msg"} "Time/Dist:"]
-       [:input {:type "text" :name "get-submit"}]
-       [:input {:type "submit" :value "submit"}]
-      ]]
-     ]
 
-     [:form {:method "get" :action "get-submit"}
-      [:ul [:li
-      [:label {:for "msg"} "Sets/Reps:"]
-       [:input {:type "text" :name "get-submit"}]
-       [:input {:type "submit" :value "submit"}]
-       ]]
-     ]
-
-     [:form {:method "get" :action "get-submit"}
-      [:ul [:li
-       [:label {:for "msg"} "Intensity:"]
-       [:input {:type "text" :name "get-submit"}]
-       [:input {:type "submit" :value "submit"}]
-      ]]
-     ]
-
-     [:form {:method "get" :action "get-submit"}
-      [:ul [:li
-      [:label {:for "msg"} "Notes:"]
-      [:input {:type "text" :name "get-submit"}]
-      [:input {:type "submit" :value "submit"}]
-      ]]
-      ]
-     ]
-     [:p [:a {:href "/main"} "Return to main page!"]]
+(defn post-warm-up 
+[{:keys [activity timeDist sets notes intensity]}]
+  (page/html5
+   (gen-page-head "Form Submitted")
+    [:div
+     [:h1 "Form Submitted"]
+     [:p "You submitted the following:"]
+     [:ul [:li
+      [:label {:for "msg"} activity]
+      [:label {:for "msg"} timeDist]
+      [:label {:for "msg"} sets]
+      [:label {:for "msg"} notes]
+      [:label {:for "msg"} intensity]
+     ]]
+    ]
+    [:p [:a {:href "/"} "Return to main page!"]]
     ))
 
 (defn main []
@@ -262,33 +240,33 @@
    ]))
 
 
-(defn get-form [req]
-  ;;[req]
-  (page/html5
-  (gen-page-head "gf-style")
-    [:div
-     [:h1 "Hello GET form!"]
-     [:p "Submit a message with GET"]
-     [:form {:method "get" :action "get-submit"}
-      [:input {:type "text" :name "get-submit"}]
-      [:input {:type "submit" :value "submit"}]
-     [:p [:a {:href "/main"} "Return to main page!"]]
-      ]]
-    ))
+;; (defn get-form [req]
+;;   ;;[req]
+;;   (page/html5
+;;   (gen-page-head "gf-style")
+;;     [:div
+;;      [:h1 "Hello GET form!"]
+;;      [:p "Submit a message with GET"]
+;;      [:form {:method "get" :action "get-submit"}
+;;       [:input {:type "text" :name "get-submit"}]
+;;       [:input {:type "submit" :value "submit"}]
+;;      [:p [:a {:href "/main"} "Return to main page!"]]
+;;       ]]
+;;     ))
 
-(defn post-form [req]
-  ;;[req]
-  (page/html5
-  (gen-page-head "pf-style")
-   [:div
-      [:h1 "Hello POST Form!"]
-      [:p "Submit a message with POST"]
-      ;; action sends the form-data to a file (URL URI)
-      ;; named "post-submit", processing the input
-      [:form {:method "post" :action "post-submit"}
-       [:input {:type "text"} {:name "name"}]
-       [:input {:type "submit"} {:value "submit"}]]
-      [:p [:a {:href ".."} "Return to main page"]]]))
+;; (defn post-form [req]
+;;   ;;[req]
+;;   (page/html5
+;;   (gen-page-head "pf-style")
+;;    [:div
+;;       [:h1 "Hello POST Form!"]
+;;       [:p "Submit a message with POST"]
+;;       ;; action sends the form-data to a file (URL URI)
+;;       ;; named "post-submit", processing the input
+;;       [:form {:method "post" :action "post-submit"}
+;;        [:input {:type "text"} {:name "name"}]
+;;        [:input {:type "submit"} {:value "submit"}]]
+;;       [:p [:a {:href ".."} "Return to main page"]]]))
 
 (defn not-found [req]
   (page/html5
@@ -306,5 +284,3 @@
           [:h1 "Hello " (h param-name) "!"]
           [:p "Submitted via a" req-type " request"]
           [:p [:a {:href="/main"} "Return to main page"]]])))
-
-
