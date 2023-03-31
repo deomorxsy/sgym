@@ -8,7 +8,7 @@
             [hiccup.core :as hiccup]
             [sgym.views :as views]
             ;;[sgym.db :refer [get-all get-by-id save-id]]
-            [sgym.db :as db]
+            ;;[sgym.mongo.db :as db]
             [ring.middleware.defaults :refer [wrap-defaults site-defaults]]
             [ring.middleware.keyword-params :as rmkp]
             [ring.middleware.params :as rmp]))
