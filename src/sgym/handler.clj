@@ -7,6 +7,8 @@
             [compojure.route :as route]
             [hiccup.core :as hiccup]
             [sgym.views :as views]
+            ;;[sgym.db :refer [get-all get-by-id save-id]]
+            [sgym.mongo.db :as db]
             [ring.middleware.defaults :refer [wrap-defaults site-defaults]]
             [ring.middleware.keyword-params :as rmkp]
             [ring.middleware.params :as rmp]))
@@ -42,17 +44,8 @@
             (GET "/cool" [] (views/cool))
     ))
 
-;;(defroutes user-routes
-;;  (context "/new-plan" []
-;;   (GET "/" [] (views/new-plan))
-;;   (GET "/warm-up" [] (views/warm-up))
-   ;;(GET "/strength" [] (strength))
-   ;;(GET "/cardio" [] (views/cardio))
-   ;;(GET "/cool" [] (views/cool))
-  ;;))
-
 (def app
   (wrap-defaults app-routes (assoc-in site-defaults [:security :anti-forgery] false)))
-  ;; (wrap-defaults app-routes site-defaults))
+  ;;(wrap-defaults app-routes site-defaults))
 
 

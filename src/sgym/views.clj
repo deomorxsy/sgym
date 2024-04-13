@@ -2,7 +2,8 @@
   (:require [clojure.string :as str]
             [hiccup.core :refer [html h]]
             [hiccup.page :as page]
-            [ring.util.anti-forgery :as util]))
+            [ring.util.anti-forgery :as util]
+            [sgym.db :as db]))
 
 
 (defn gen-page-head
